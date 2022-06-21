@@ -1,6 +1,5 @@
 import {useState, useEffect} from "react";
 import Player from "./components/Player";
-//import songsData from "./songsData";
 import axios from "axios";
 
 function App() {

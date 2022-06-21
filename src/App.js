@@ -8,11 +8,14 @@ function App() {
 		[currentSongIndex, setCurrentSongIndex] = useState(0),
 		[nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
 
-	useEffect(() => {
-		axios.get(apiURL)
-			.then(resp => setSongs(resp.data))
-			.catch(err => console.error(err));
+	useEffect( () => {
+		async function fetchData() {
+			const resp = await axios.get(apiURL);
+			setSongs(resp.data)		}
+		fetchData();
+	}, [])
 
+	useEffect(() => {
 		setNextSongIndex(() => {
 			if (currentSongIndex + 1 > songs.length - 1) {
 				return 0;

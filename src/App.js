@@ -11,7 +11,8 @@ function App() {
 	useEffect( () => {
 		async function fetchData() {
 			const resp = await axios.get(apiURL);
-			setSongs(resp.data)		}
+			setSongs(resp.data)
+		}
 		fetchData();
 	}, [])
 

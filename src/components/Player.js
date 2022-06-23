@@ -37,11 +37,10 @@ const Player = (props) => {
 			});
 		}
 	};
-	const srcSong = "http://localhost:8000/storage/songs/" + props.songs[props.currentSongIndex].filename;
 	return (
 		<div className="c-player">
 			<audio
-				src={srcSong}
+				src={props.songs[props.currentSongIndex].song_url}
 				ref={audioEl}
 			></audio>
 			<h4>Playing now</h4>
@@ -53,8 +52,9 @@ const Player = (props) => {
 			/>
 			<p>
 				<strong>Next up: </strong>
-				{props.songs[props.nextSongIndex].title} <span> - </span>
-				{props.songs[props.nextSongIndex].artist.name}
+				{props.songs[props.nextSongIndex].title}
+				<span> - </span>
+				{props.songs[props.nextSongIndex].artist}
 			</p>
 		</div>
 	);

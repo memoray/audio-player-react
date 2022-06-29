@@ -39,6 +39,7 @@ const Player = (props) => {
   return (
     <div className="c-player">
       <audio
+        onEnded={SkipSong}
         src={props.songs[props.currentSongIndex].src}
         ref={audioEl}
       ></audio>

@@ -40,7 +40,7 @@ const Player = (props) => {
 	return (
 		<div className="c-player">
 			<audio
-				src={props.songs[props.currentSongIndex].song_url}
+				src={props.songs[props.currentSongIndex].song}
 				ref={audioEl}
 			></audio>
 			<h4>Playing now</h4>

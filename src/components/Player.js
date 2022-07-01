@@ -50,6 +50,7 @@ const Player = (props) => {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
         SkipSong={SkipSong}
+        audio={audioEl}
       />
       <ProgressBar audio={audioEl} />
       <p>

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import PlayerDetails from "./PlayerDetails";
 import PlayerControls from "./PlayerControls";
+import ProgressBar from "./ProgressBar";
 
 const Player = (props) => {
   const audioEl = useRef(null);
@@ -50,10 +51,10 @@ const Player = (props) => {
         setIsPlaying={setIsPlaying}
         SkipSong={SkipSong}
       />
-      <ProgressBar />
+      <ProgressBar audio={audioEl} />
       <p>
         <strong>Next Song: </strong>
-        {props.songs[props.nextSongIndex].title} <span> - </span>
+        {props.songs[props.nextSongIndex].title} -{" "}
         {props.songs[props.nextSongIndex].artist}
       </p>
     </div>

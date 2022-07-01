@@ -44,7 +44,7 @@ body {
 .c-player--details .details-img {
   position: relative;
   width: fit-content;
-  margin: 50px auto;
+  margin: 30px auto;
 }
 
 .c-player--details .details-img img {
@@ -105,4 +105,55 @@ body {
   color: turquoise;
   font-size: 24px;
   cursor: pointer;
+}
+
+strong {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+audio,
+progress {
+  display: block;
+}
+progress {
+  width: 100%;
+  background-color: white;
+  height: 6px;
+  margin-bottom: 5px;
+  border: 0;
+  border-radius: 1rem;
+}
+
+.prg-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.player-progress {
+  max-width: 290px;
+  margin: 2rem auto;
+}
+
+span {
+  color: turquoise;
+  font-size: 12px;
+  text-align: center;
+  font-weight: 400;
+}
+
+#bar::-moz-progress-bar {
+  background-color: turquoise;
+  border-radius: 1.5rem;
+}
+
+progress::-webkit-progress-bar {
+  background-color: white;
+  border-radius: 1.5rem;
+}
+
+::-webkit-progress-value {
+  background-color: turquoise;
+  border-radius: 1.5rem;
 }

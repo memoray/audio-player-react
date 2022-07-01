@@ -43,15 +43,16 @@ const Player = (props) => {
         src={props.songs[props.currentSongIndex].src}
         ref={audioEl}
       ></audio>
-      <h4>Playing now</h4>
+      {isPlaying ? <h4>Playing now</h4> : <h4>Audio Player</h4>}
       <PlayerDetails song={props.songs[props.currentSongIndex]} />
       <PlayerControls
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
         SkipSong={SkipSong}
       />
+      <ProgressBar />
       <p>
-        <strong>Next up: </strong>
+        <strong>Next Song: </strong>
         {props.songs[props.nextSongIndex].title} <span> - </span>
         {props.songs[props.nextSongIndex].artist}
       </p>

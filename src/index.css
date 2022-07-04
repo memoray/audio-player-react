@@ -109,11 +109,6 @@ body {
   cursor: pointer;
 }
 
-.c-player--controls .row {
-  display: block;
-  clear: both;
-  text-align: center;
-}
 .row .volume {
   width: 100%;
 }

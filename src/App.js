@@ -1,12 +1,20 @@
 import { useState, useEffect } from "react";
 import Player from "./components/Player";
-import songsData from "./songsData";
+import axios from "axios";
 
 function App() {
-  const [songs] = useState(songsData);
+  const apiURL = "http://localhost:8000/api/songs",
+    [songs, setSongs] = useState([]),
+    [currentSongIndex, setCurrentSongIndex] = useState(0),
+    [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
 
-  const [currentSongIndex, setCurrentSongIndex] = useState(0);
-  const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
+  useEffect(() => {
+    async function fetchData() {
+      const resp = await axios.get(apiURL);
+      setSongs(resp.data);
+    }
+    fetchData();
+  }, []);
 
   useEffect(() => {
     setNextSongIndex(() => {
@@ -16,18 +24,21 @@ function App() {
         return currentSongIndex + 1;
       }
     });
-  }, [currentSongIndex]);
+  }, [songs, currentSongIndex]);
 
-  return (
-    <div className="App">
-      <Player
-        currentSongIndex={currentSongIndex}
-        setCurrentSongIndex={setCurrentSongIndex}
-        nextSongIndex={nextSongIndex}
-        songs={songs}
-      />
-    </div>
-  );
+  if (songs && songs.length > 0) {
+    return (
+      <div className="App">
+        <Player
+          currentSongIndex={currentSongIndex}
+          setCurrentSongIndex={setCurrentSongIndex}
+          nextSongIndex={nextSongIndex}
+          songs={songs}
+        />
+      </div>
+    );
+  }
+  return <div></div>;
 }
 
 export default App;

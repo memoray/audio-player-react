@@ -38,9 +38,7 @@ const Player = (props) => {
     }
   };
   const setVolume = (vol) => {
-    console.info("volume", vol);
-    const audio = document.querySelector('audio');
-    audio.volume = parseFloat(vol);
+      audioEl.volume = parseFloat(vol);
   }
   return (
     <div className="c-player">
@@ -59,11 +57,6 @@ const Player = (props) => {
         setVolume={setVolume}
       />
       <ProgressBar audio={audioEl} />
-      <div className="row">
-        <input className="volume" type="range" min="0" max="1" step="0.01"
-               onChange={(e) => setVolume(e.target.value)}
-        />
-      </div>
       <p>
         <strong>Next Song: </strong>
         {props.songs[props.nextSongIndex].title} -{" "}

@@ -44,7 +44,7 @@ body {
 .c-player--details .details-img {
   position: relative;
   width: fit-content;
-  margin: 50px auto;
+  margin: 30px auto;
 }
 
 .c-player--details .details-img img {
@@ -83,7 +83,7 @@ body {
 }
 .c-player--controls .play-btn {
   display: flex;
-  margin: 0 30px;
+  margin: 0 25px;
   padding: 20px;
   border-radius: 50%;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8),
@@ -98,11 +98,64 @@ body {
   cursor: pointer;
 }
 
-.c-player--controls .skip-btn {
+.c-player--controls .skip-btn,
+.for-backward {
+  margin: 0 14px;
   border: none;
   outline: none;
   background: none;
   color: turquoise;
   font-size: 24px;
   cursor: pointer;
+}
+
+strong {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+audio,
+progress {
+  display: block;
+}
+progress {
+  width: 100%;
+  background-color: white;
+  height: 6px;
+  margin-bottom: 5px;
+  border: 0;
+  border-radius: 1rem;
+}
+
+.prg-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.player-progress {
+  max-width: 290px;
+  margin: 2rem auto;
+}
+
+span {
+  color: turquoise;
+  font-size: 12px;
+  text-align: center;
+  font-weight: 400;
+}
+
+#bar::-moz-progress-bar {
+  background-color: turquoise;
+  border-radius: 1.5rem;
+}
+
+progress::-webkit-progress-bar {
+  background-color: white;
+  border-radius: 1.5rem;
+}
+
+::-webkit-progress-value {
+  background-color: turquoise;
+  border-radius: 1.5rem;
 }

@@ -109,6 +109,14 @@ body {
   cursor: pointer;
 }
 
+.c-player--controls .row {
+  display: block;
+  clear: both;
+  text-align: center;
+}
+.row .volume {
+  width: 100%;
+}
 strong {
   text-transform: uppercase;
   font-weight: 400;

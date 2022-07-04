@@ -18,12 +18,13 @@ const ProgressBar = (props) => {
 
   useEffect(() => {
     audio.current.addEventListener("timeupdate", () => {
-      document.getElementById("current-time").innerHTML = timeFormat(
-        audio.current.currentTime
-      );
-
-      document.getElementById("bar").value =
-        (audio.current.currentTime / audio.current.duration) * 100;
+      if(audio.current.currentTime > 0) {
+        document.getElementById("current-time").innerHTML = timeFormat(
+            audio.current.currentTime
+        );
+        document.getElementById("bar").value =
+            (audio.current.currentTime / audio.current.duration) * 100;
+      }
     });
   });
 

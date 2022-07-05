@@ -39,7 +39,7 @@ body {
   font-size: 14px;
   text-align: center;
   font-weight: 400;
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .c-player--details .details-img {
@@ -73,14 +73,14 @@ body {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
     -2px -2px 4px rgba(255, 255, 244, 0.4);
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .c-player--controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 26px;
 }
 .c-player--controls .play-btn {
   display: flex;
@@ -127,11 +127,15 @@ input {
   height: 6px;
   background-color: white;
   border: 0;
-  border-radius: 1rem;
+  border-radius: 16px;
 }
 
 progress {
   margin-bottom: 5px;
+}
+
+input {
+  cursor: pointer;
 }
 
 .prg-bar,
@@ -141,13 +145,13 @@ progress {
   justify-content: space-between;
 }
 
-.player-progress {
+.prg-bar {
   max-width: 290px;
-  margin: 1.2rem auto;
+  margin: 15px auto;
 }
 
 .player-volume {
-  max-width: 255px;
+  max-width: 250px;
   flex: 2 1 auto;
 }
 
@@ -159,8 +163,7 @@ progress {
   padding: 0 15px;
 }
 
-.mute,
-.unmute {
+.mute {
   margin: 0 px;
   border: none;
   outline: none;
@@ -171,8 +174,7 @@ progress {
   cursor: pointer;
 }
 
-.mute:hover,
-.unmute:hover {
+.mute:hover {
   color: turquoise;
 }
 
@@ -185,17 +187,17 @@ span {
 
 #bar::-moz-progress-bar {
   background-color: turquoise;
-  border-radius: 1.5rem;
+  border-radius: 24px;
 }
 
 progress::-webkit-progress-bar {
   background-color: white;
-  border-radius: 1.5rem;
+  border-radius: 24px;
 }
 
 ::-webkit-progress-value {
   background-color: turquoise;
-  border-radius: 1.5rem;
+  border-radius: 24px;
 }
 
 input[type="range"]::-moz-range-thumb,
@@ -206,6 +208,6 @@ input[type="range"]::-moz-range-thumb,
 
 input[type="range"]::-moz-range-progress {
   height: 6px;
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
 }

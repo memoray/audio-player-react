@@ -20,7 +20,7 @@ body {
   width: 400px;
   display: block;
   background-color: #002231;
-  padding: 50px;
+  padding: 40px;
   border-radius: 16px;
   box-shadow: inset -6px -6px 12px rgba(0, 0, 0, 0.8),
     inset 6px 6px 12px rgba(255, 255, 244, 0.4);
@@ -39,6 +39,7 @@ body {
   font-size: 14px;
   text-align: center;
   font-weight: 400;
+  margin-top: 20px;
 }
 
 .c-player--details .details-img {
@@ -51,7 +52,7 @@ body {
   display: block;
   margin: 0px auto;
   width: 100%;
-  max-width: 250px;
+  max-width: 240px;
   border-radius: 50%;
   box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 0.8),
     -6px -6px 12px rgba(255, 255, 244, 0.4);
@@ -79,7 +80,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .c-player--controls .play-btn {
   display: flex;
@@ -118,19 +119,26 @@ strong {
 }
 
 audio,
-progress {
+progress,
+input {
   display: block;
 }
-progress {
+
+progress,
+input {
   width: 100%;
-  background-color: white;
   height: 6px;
-  margin-bottom: 5px;
+  background-color: white;
   border: 0;
   border-radius: 1rem;
 }
 
-.prg-bar {
+progress {
+  margin-bottom: 5px;
+}
+
+.prg-bar,
+.vol-slider {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -138,7 +146,37 @@ progress {
 
 .player-progress {
   max-width: 290px;
-  margin: 2rem auto;
+  margin: 1.2rem auto;
+}
+
+.player-volume {
+  max-width: 255px;
+  flex: 2 1 auto;
+}
+
+.volume {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.mute,
+.unmute {
+  margin: 0 px;
+  border: none;
+  outline: none;
+  background: none;
+  color: white;
+  font-size: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.mute:hover,
+.unmute:hover {
+  color: turquoise;
 }
 
 span {
@@ -161,4 +199,16 @@ progress::-webkit-progress-bar {
 ::-webkit-progress-value {
   background-color: turquoise;
   border-radius: 1.5rem;
+}
+
+input[type="range"]::-moz-range-thumb,
+::-moz-range-progress {
+  background-color: turquoise;
+  border: turquoise;
+}
+
+input[type="range"]::-moz-range-progress {
+  height: 6px;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }

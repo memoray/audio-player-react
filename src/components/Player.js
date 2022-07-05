@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import PlayerDetails from "./PlayerDetails";
 import PlayerControls from "./PlayerControls";
 import ProgressBar from "./ProgressBar";
+import { VolumeSlider } from "./VolumeSlider";
 
 const Player = (props) => {
   const audioEl = useRef(null);
@@ -37,10 +38,6 @@ const Player = (props) => {
       });
     }
   };
-  const setVolume = (vol) => {
-      const audio = document.querySelector('audio');
-      audio.volume = parseFloat(vol)
-  }
   return (
     <div className="c-player">
       <audio
@@ -50,20 +47,15 @@ const Player = (props) => {
       ></audio>
       {isPlaying ? <h4>Playing now</h4> : <h4>Audio Player</h4>}
       <PlayerDetails song={props.songs[props.currentSongIndex]} />
+      <ProgressBar audio={audioEl} />
       <PlayerControls
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
         SkipSong={SkipSong}
         audio={audioEl}
-        setVolume={setVolume}
       />
-      <ProgressBar audio={audioEl} />
-        <div className="row">
-            <input className="volume" type="range" min="0" max="1" step="0.01"
-                   onChange={e => setVolume(e.target.value) }
-            />
-        </div>
-        <p>
+      <VolumeSlider />
+      <p>
         <strong>Next Song: </strong>
         {props.songs[props.nextSongIndex].title} -{" "}
         {props.songs[props.nextSongIndex].artist}

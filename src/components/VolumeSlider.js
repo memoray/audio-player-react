@@ -1,29 +1,34 @@
-import { IoVolumeMute, IoVolumeHigh } from "react-icons/io5";
-//import { useState } from "react";
+import {
+  ImVolumeMute2,
+  ImVolumeLow,
+  ImVolumeMedium,
+  ImVolumeHigh,
+} from "react-icons/im";
 
-export const VolumeSlider = () => {
-  const defaultValue = 0.15;
-
-  const setVolume = (vol) => {
-    console.log(vol);
-    const aud = document.querySelector("audio");
-    aud.volume = parseFloat(vol);
-  };
-
+export const VolumeSlider = (props) => {
   return (
     <div className="volume">
-      <button className="mute">
-        <IoVolumeMute />
+      <button className="mute" onClick={() => props.setIsMuted(!props.isMuted)}>
+        {props.isMuted || props.volume === 0 ? (
+          <ImVolumeMute2 />
+        ) : !props.isMuted && props.volume > 0 && props.volume <= 0.3 ? (
+          <ImVolumeLow />
+        ) : !props.isMuted && props.volume > 0.3 && props.volume <= 0.7 ? (
+          <ImVolumeMedium />
+        ) : (
+          <ImVolumeHigh />
+        )}
       </button>
+
       <div className="player-volume">
         <div className="vol-slider">
           <input
             type="range"
             id="vol"
-            defaultValue={defaultValue}
+            defaultValue={props.volume}
             max="1"
             step="0.01"
-            onChange={(e) => setVolume(e.target.value)}
+            onChange={(e) => props.setVolume(e.target.value)}
           ></input>
         </div>
       </div>

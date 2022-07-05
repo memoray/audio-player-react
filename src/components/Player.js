@@ -5,14 +5,13 @@ import ProgressBar from "./ProgressBar";
 import { VolumeSlider } from "./VolumeSlider";
 
 const Player = (props) => {
+    const defaultVolume = 0.15;
   const audioEl = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
     const [mute, setMute] = useState(true);
-    const defaultVolume = 0.15;
+    const [volume, setVolume] = useState(defaultVolume);
 
   useEffect(() => {
-      const audio = document.querySelector('audio');
-      audio.volume = defaultVolume;
     if (isPlaying) {
       audioEl.current.play();
     } else {
@@ -20,15 +19,18 @@ const Player = (props) => {
     }
   });
 
+    useEffect(() => {
+        audioEl.current.volume = volume;
+    });
+
     const setMuted = () => {
         setMute(!mute)
-        const audio = document.querySelector('audio').muted = mute;
-        console.info(audio.muted)
+        audioEl.current.muted = mute;
     };
 
-  const setVolume = (vol) => {
-      const audio = document.querySelector('audio');
-      audio.volume = parseFloat(vol);
+  const setVolumeRange = (vol) => {
+      audioEl.current.volume = parseFloat(vol);
+      setVolume(audioEl.current.volume)
   };
 
   const SkipSong = (forwards = true) => {
@@ -70,7 +72,13 @@ const Player = (props) => {
         SkipSong={SkipSong}
         audio={audioEl}
       />
-      <VolumeSlider defaultVolume={defaultVolume} setVolume={setVolume} muted={mute} setMuted={setMuted} />
+      <VolumeSlider
+          defaultVolume={defaultVolume}
+          volume={volume}
+          setVolume={setVolumeRange}
+          muted={mute}
+          setMuted={setMuted}
+      />
       <p>
         <strong>Next Song: </strong>
         {props.songs[props.nextSongIndex].title} -{" "}

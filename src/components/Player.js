@@ -6,7 +6,10 @@ import { VolumeSlider } from "./VolumeSlider";
 
 const Player = (props) => {
   const audioEl = useRef(null);
+  const defaultVolume = 0.15;
   const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(defaultVolume);
+  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
     if (isPlaying) {
@@ -15,6 +18,24 @@ const Player = (props) => {
       audioEl.current.pause();
     }
   });
+
+  useEffect(() => {
+    audioEl.current.volume = volume;
+  });
+
+  useEffect(() => {
+    if (isMuted) {
+      audioEl.current.muted = true;
+    } else {
+      audioEl.current.muted = false;
+    }
+  });
+
+  const setVolumeRange = (vol) => {
+    audioEl.current.volume = parseFloat(vol);
+    setVolume(audioEl.current.volume);
+  };
+
   const SkipSong = (forwards = true) => {
     if (forwards) {
       props.setCurrentSongIndex(() => {
@@ -38,6 +59,7 @@ const Player = (props) => {
       });
     }
   };
+
   return (
     <div className="c-player">
       <audio
@@ -54,9 +76,16 @@ const Player = (props) => {
         SkipSong={SkipSong}
         audio={audioEl}
       />
-      <VolumeSlider />
+      <VolumeSlider
+        volume={volume}
+        setVolume={setVolumeRange}
+        isMuted={isMuted}
+        setIsMuted={setIsMuted}
+        defaultVolume={defaultVolume}
+        audio={audioEl}
+      />
       <p>
-        <strong>Next Song: </strong>
+        <strong>Next song: </strong>
         {props.songs[props.nextSongIndex].title} -{" "}
         {props.songs[props.nextSongIndex].artist}
       </p>

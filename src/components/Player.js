@@ -7,14 +7,30 @@ import { VolumeSlider } from "./VolumeSlider";
 const Player = (props) => {
   const audioEl = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+    const [mute, setMute] = useState(true);
+    const defaultVolume = 0.15;
 
   useEffect(() => {
+      const audio = document.querySelector('audio');
+      audio.volume = defaultVolume;
     if (isPlaying) {
       audioEl.current.play();
     } else {
       audioEl.current.pause();
     }
   });
+
+    const setMuted = () => {
+        setMute(!mute)
+        const audio = document.querySelector('audio').muted = mute;
+        console.info(audio.muted)
+    };
+
+  const setVolume = (vol) => {
+      const audio = document.querySelector('audio');
+      audio.volume = parseFloat(vol);
+  };
+
   const SkipSong = (forwards = true) => {
     if (forwards) {
       props.setCurrentSongIndex(() => {
@@ -54,7 +70,7 @@ const Player = (props) => {
         SkipSong={SkipSong}
         audio={audioEl}
       />
-      <VolumeSlider />
+      <VolumeSlider defaultVolume={defaultVolume} setVolume={setVolume} muted={mute} setMuted={setMuted} />
       <p>
         <strong>Next Song: </strong>
         {props.songs[props.nextSongIndex].title} -{" "}
